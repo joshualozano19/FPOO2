@@ -14,7 +14,7 @@ public class Soldado{
         }
 
         public void recibirDano(int dano) {
-            salud -= daño;
+            salud -= dano;
             if (salud <= 0) {
                 salud = 0;
                 System.out.println(nombre + " ha sido eliminado.");

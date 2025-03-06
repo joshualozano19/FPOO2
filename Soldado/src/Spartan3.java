@@ -6,4 +6,5 @@ public class Spartan3 extends Spartan{
     public void CamuflajeActivo(){
         System.out.println(nombre+" Camuflaje activo para volverse invisible: ");
     }
+
 }
