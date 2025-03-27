@@ -7,9 +7,13 @@
  *
  * @author marqu
  */
+
 import java.sql.Connection;
 import javax.swing.JOptionPane;
-public class FromRegistro extends javax.swing.JFrame{
+
+
+public class FromRegistro extends javax.swing.JFrame {
+
     /**
      * Creates new form FromRegistro
      */
@@ -17,6 +21,7 @@ public class FromRegistro extends javax.swing.JFrame{
         initComponents();
         verificarConexion();
     }
+    
     private void verificarConexion(){
          
         Connection conexion = ConexionMySQL.conectar();
@@ -41,12 +46,12 @@ public class FromRegistro extends javax.swing.JFrame{
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        btnLimpuar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         txtCorreo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 255));
@@ -67,12 +72,12 @@ public class FromRegistro extends javax.swing.JFrame{
             }
         });
 
-        btnLimpiar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnLimpiar.setForeground(new java.awt.Color(102, 51, 255));
-        btnLimpiar.setText("Limpiar");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+        btnLimpuar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLimpuar.setForeground(new java.awt.Color(102, 51, 255));
+        btnLimpuar.setText("Limpiar");
+        btnLimpuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
+                btnLimpuarActionPerformed(evt);
             }
         });
 
@@ -102,7 +107,7 @@ public class FromRegistro extends javax.swing.JFrame{
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnGuardar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
-                        .addComponent(btnLimpiar)))
+                        .addComponent(btnLimpuar)))
                 .addGap(74, 74, 74))
             .addGroup(layout.createSequentialGroup()
                 .addGap(102, 102, 102)
@@ -128,7 +133,7 @@ public class FromRegistro extends javax.swing.JFrame{
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLimpuar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
@@ -142,41 +147,12 @@ public class FromRegistro extends javax.swing.JFrame{
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
-        //1. Obtener los valores de los txt
-        String nombre = txtNombre.getText();
-        String correo = txtCorreo.getText();
-        String contrasena = txtContrasena.getText();
-        //2. Validar que no viene vacios a BD
-        if(nombre.isEmpty()||correo.isEmpty()||contrasena.isEmpty()){
-        JOptionPane.showMessageDialog(this,"Todos los campos son obligatorios", "Error", JOptionPane.ERROR);
-        return;
-        }
-        //3. Ejecutar el Insert
-        UserCRUD crud = new UserCRUD();
-        boolean status = crud.crearUsuario(nombre, correo, contrasena);
-        //4. Notificamos status del Insert
-        if(status){
-            JOptionPane.showMessageDialog(this,"Usuario Guardado ", "Exito", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            
-            JOptionPane.showMessageDialog(this,"No se guardo ", "Error", JOptionPane.ERROR);
-        }
-        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    
-    private void limpiarCampos(){    
-    txtNombre.setText(" ");
-    txtCorreo.setText(" ");
-    txtContrasena.setText(" ");
-    }
-    
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        limpiarCampos();
+    private void btnLimpuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpuarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLimpuarActionPerformed
 
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    
     /**
      * @param args the command line arguments
      */
@@ -203,6 +179,7 @@ public class FromRegistro extends javax.swing.JFrame{
             java.util.logging.Logger.getLogger(FromRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -210,9 +187,10 @@ public class FromRegistro extends javax.swing.JFrame{
             }
         });
     }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnLimpuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
